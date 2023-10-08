@@ -2,14 +2,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; 
+    background-color: #9ddcf9; 
 }
 
 header, nav, .content, footer {
     padding: 20px;
     text-align: center;
     background-color: #333333; 
-    color: #fff; 
+    color: #157be9; 
 }
 
 nav ul {
