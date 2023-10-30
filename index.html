@@ -6,27 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Cá Nhân</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="topnav" id="myTopnav">
+        <a class="logo" href="index.html">NGUYỄN HOÀNG QUI</a>
+        <div class="topnav-right">
+            <a class="active" href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"> E</a>
+        </div>
+    </div>
     <header>
         <h1>Chào mừng đến với Trang Cá Nhân của Tôi!</h1>
     </header>
 
-    <nav>
-        <ul>
-            <li><i class="fa fa-home"></i><a href="#">Trang chủ</a></li>
-            <li><i class="fa fa-user"></i><a href="#">Về tôi</a></li>
-            <li><i class="fa fa-cogs"></i><a href="#">Dịch vụ</a></li>
-            <li><i class="fa fa-envelope"></i><a href="#">Liên hệ</a></li>
-        </ul>
-    </nav>
-
     <section class="content">
         <h2>Về Tôi</h2>
         <p>Xin chào! Tôi là Nguyễn Hoàng Qui.</p>
-        <p>Mã số sinh viên: 22130231</p>
-        <p>Đây là trang web cá nhân của tôi.</p>
+
+        <div class="project" id="project2">
+            <div class="project-image"> 
+                <img src="https://picsum.photos/300/300?random=2" alt="Personal web">
+            </div>
+            <h4 class="project-title">
+                <a class="back-btn" href="about.html">About</a>
+            </h4>
+        </div>
     </section>
 
     <footer>
