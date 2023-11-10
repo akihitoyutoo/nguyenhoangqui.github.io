@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manager.css">
+    <link rel="stylesheet" href="https://example.com/path-to-your-icons-library/style.css">
+    <title>Quản Lí Thực Đơn</title>
+
+    <script>
+        // Danh sách mẫu các món ăn
+        let menu = [
+            { id: 1, name: "Phở", price: 10 },
+            { id: 2, name: "Bánh mì", price: 5 },
+            // ... (thêm món ăn khác)
+        ];
+
+        // Hàm hiển thị danh sách món ăn
+        function showMenu() {
+            console.clear();
+            console.log("Danh sách món ăn:");
+            console.table(menu);
+        }
+
+         // Hiển thị danh sách món ăn hiện có
+         let menuList = document.getElementById("menuList");
+            menuList.innerHTML = "<h3>Danh sách món ăn hiện có:</h3>";
+
+            if (menu.length > 0) {
+                let ul = document.createElement("ul");
+                menu.forEach(food => {
+                    let li = document.createElement("li");
+                    li.textContent = `${food.name} - ${food.price}$`;
+                    ul.appendChild(li);
+                });
+                menuList.appendChild(ul);
+            } else {
+                menuList.innerHTML += "<p>Không có món ăn nào.</p>";
+            }
+
+        // Hàm thêm món ăn
+        function themMonAn() {
+            let newName = prompt("Nhập tên món ăn:");
+            let newPrice = parseFloat(prompt("Nhập giá món ăn:"));
+
+            if (newName && !isNaN(newPrice)) {
+                let newId = menu.length + 1;
+                let newFood = { id: newId, name: newName, price: newPrice };
+                menu.push(newFood);
+                showMenu();
+            } else {
+                alert("Vui lòng nhập đúng thông tin món ăn.");
+            }
+        }
+
+        // Hàm sửa món ăn
+        function suaMonAn() {
+            let foodId = parseInt(prompt("Nhập ID món ăn cần sửa:"));
+            let index = menu.findIndex(food => food.id === foodId);
+
+            if (index !== -1) {
+                let newName = prompt("Nhập tên mới:");
+                let newPrice = parseFloat(prompt("Nhập giá mới:"));
+
+                if (newName && !isNaN(newPrice)) {
+                    menu[index].name = newName;
+                    menu[index].price = newPrice;
+                    showMenu();
+                } else {
+                    alert("Vui lòng nhập đúng thông tin món ăn.");
+                }
+            } else {
+                alert("Không tìm thấy món ăn có ID " + foodId);
+            }
+        }
+
+        // Hàm xóa món ăn
+        function xoaMonAn() {
+            let foodId = parseInt(prompt("Nhập ID món ăn cần xóa:"));
+            let index = menu.findIndex(food => food.id === foodId);
+
+            if (index !== -1) {
+                menu.splice(index, 1);
+                showMenu();
+            } else {
+                alert("Không tìm thấy món ăn có ID " + foodId);
+            }
+        }
+
+        // Hàm tìm kiếm món ăn
+        function timKiemMonAn() {
+            let keyword = prompt("Nhập từ khóa tìm kiếm:");
+            let result = menu.filter(food => food.name.toLowerCase().includes(keyword.toLowerCase()));
+
+            if (result.length > 0) {
+                console.log("Kết quả tìm kiếm:");
+                console.table(result);
+            } else {
+                console.log("Không tìm thấy món ăn nào.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="e1_18" onclick="themMonAn()">Thêm</div>
+    <div class="e1_30" onclick="suaMonAn()">Sửa</div>
+    <div class="e1_35" onclick="xoaMonAn()">Xóa</div>
+    <div class="e1_50" onclick="timKiemMonAn()">Tìm kiếm</div>
+    <div id="menuList"></div>
+
+    <div class=e1_2>
+        <div class=e1_46>
+            <div class=e1_16>
+                <div class=e1_9>
+                    <div class="e1_7"><img src="logo_quanli.png" alt="Myself Image" style="width: 80%;"></div>
+                    <div class=e1_8><span class="e1_4">Trang Chủ</span><span class="e1_5">Thực Đơn</span></div>
+                    <div class=e1_44>
+                        <div class="e1_39"></div>
+                        <div class="e1_43"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=e1_70>
+            <div class="e1_49"></div>
+            <div class=e1_59>
+                <div class=e1_47>
+                    <div class=e1_17>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" id="home">
+                            <path fill="none" d="M0 0h24v24H0V0z"></path>
+                            <path
+                                d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z">
+                            </path>
+                        </svg><span class="e1_11">Trang chủ</span>
+                    </div>
+                    <div class=e1_22>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" id="add">
+                            <path
+                                d="M38 6H10c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4V10c0-2.21-1.79-4-4-4zm-4 20h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z">
+                            </path>
+                            <path fill="none" d="M0 0h48v48H0z"></path>
+                        </svg><span class="e1_18" onclick="themMonAn()">Thêm</span>
+                    </div>
+                    <div class=e1_32>
+                        <div class="e1_29"></div><span class="e1_30" onclick="suaMonAn()">Sửa</span>
+                    </div>
+                    <div class=e1_36>
+                        <div class="e1_34"></div><span class="e1_35" onclick="xoaMonAn()">Xóa</span>
+                    </div>
+                    <div class=e1_57>
+                        <div class="e1_56"></div><span class="e1_50" onclick="timKiemMonAn()">Tìm kiếm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="e1_69"><img src="background_quanli.jpg" alt="Myself Image" style="width: 100%;"></div>
+    </div>
+</body>
+
+</html>
